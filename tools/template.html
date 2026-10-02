@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ego2Act</title>
+<meta name="description" content="Ego2Act is a benchmark of 110 real-world egocentric manipulation tasks and 2,640 videos testing whether video generators can carry out a goal, scored by the reference-free Ego2ActJudge.">
+<meta name="keywords" content="Ego2Act, egocentric video generation, video generation benchmark, goal-directed manipulation, world models, physical plausibility, VLM judge, Ego2ActJudge">
+<meta name="author" content="Patrick Amadeus Irawan, Iskandar Muda Rizky Parlambang, Rava Maulana, Qinrong Cui, Erland Hilman Fuadi, Zayd M. K. Zuhri, Nanda Ryaas Absar, Ahmed Elshabrawy, Wilfried Ariel Mulyawan, Shoubin Yu, Yue Zhang, Mohit Bansal, Alham Fikri Aji">
+<meta name="robots" content="index, follow, max-image-preview:large, max-video-preview:-1">
+<meta name="theme-color" content="#111418">
+<link rel="canonical" href="https://ego2act.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ego2Act">
+<meta property="og:title" content="Ego2Act: Evaluating Goal-Directed Manipulation in Egocentric Video Generation">
+<meta property="og:description" content="Ego2Act is a benchmark of 110 real-world egocentric manipulation tasks and 2,640 videos testing whether video generators can carry out a goal, scored by the reference-free Ego2ActJudge.">
+<meta property="og:url" content="https://ego2act.github.io/">
+<meta property="og:image" content="https://ego2act.github.io/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ego2Act logo and title">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ego2Act: Evaluating Goal-Directed Manipulation in Egocentric Video Generation">
+<meta name="twitter:description" content="Ego2Act is a benchmark of 110 real-world egocentric manipulation tasks and 2,640 videos testing whether video generators can carry out a goal, scored by the reference-free Ego2ActJudge.">
+<meta name="twitter:image" content="https://ego2act.github.io/assets/og.png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Ego2Act","url":"https://ego2act.github.io/","description":"Ego2Act is a benchmark of 110 real-world egocentric manipulation tasks and 2,640 videos testing whether video generators can carry out a goal, scored by the reference-free Ego2ActJudge.","image":"https://ego2act.github.io/assets/og.png","sameAs":["https://github.com/ego2act/ego2act","https://huggingface.co/datasets/ego2act/ego2act-bench","https://huggingface.co/datasets/ego2act/ego2act-vidgen"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Dataset","name":"Ego2Act","alternateName":["ego2act-bench","ego2act-vidgen"],"description":"Ego2Act is a benchmark of 110 real-world egocentric manipulation tasks and 2,640 videos testing whether video generators can carry out a goal, scored by the reference-free Ego2ActJudge.","url":"https://ego2act.github.io/","license":"https://creativecommons.org/licenses/by/4.0/","isAccessibleForFree":true,"keywords":["egocentric video","video generation","benchmark","manipulation","video evaluation"],"creator":{"@type":"Person","name":"Patrick Amadeus Irawan"},"distribution":[{"@type":"DataDownload","name":"ego2act-bench","contentUrl":"https://huggingface.co/datasets/ego2act/ego2act-bench","encodingFormat":"text/html"},{"@type":"DataDownload","name":"ego2act-vidgen","contentUrl":"https://huggingface.co/datasets/ego2act/ego2act-vidgen","encodingFormat":"text/html"}]}</script>
+<link rel="stylesheet" href="style.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="mark"><img src="assets/logo.svg" width=56 height=56 alt="" class="mlogo"><span class=sc>Ego2Act</span></p>
+    <h1>Evaluating Goal-Directed Manipulation in Egocentric Video Generation</h1>
+    <p class="authors"><span>Patrick Amadeus Irawan<sup>1*</sup></span> <span>Iskandar Muda Rizky Parlambang<sup>2&dagger;</sup></span> <span>Rava Maulana<sup>2&dagger;</sup></span> <span>Qinrong Cui<sup>1</sup></span> <span>Erland Hilman Fuadi<sup>1</sup></span> <span>Zayd M. K. Zuhri<sup>1</sup></span> <span>Nanda Ryaas Absar<sup>1</sup></span> <span>Ahmed Elshabrawy<sup>1</sup></span> <span>Wilfried Ariel Mulyawan<sup>3</sup></span> <span>Shoubin Yu<sup>4&Dagger;</sup></span> <span>Yue Zhang<sup>4&Dagger;</sup></span> <span>Mohit Bansal<sup>4&Dagger;</sup></span> <span>Alham Fikri Aji<sup>1*</sup></span></p>
+    <p class="affil"><span><sup>1</sup>Mohamed bin Zayed University of Artificial Intelligence</span> <span><sup>2</sup>Independent Researcher</span> <span><sup>3</sup>Nanyang Technological University</span> <span><sup>4</sup>University of North Carolina at Chapel Hill</span></p>
+    <p class="affil note"><sup>*</sup>Lead and corresponding authors &nbsp; <sup>&dagger;</sup>Major contributors &nbsp; <sup>&Dagger;</sup>Equal advising</p>
+    <nav class="links" aria-label="Project links">
+      <a class="pill" href="https://arxiv.org/abs/2610.01092" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h9l5 5v15H6z M14 2v6h6" fill="none" stroke="currentColor" stroke-width="2"/></svg>Paper</a>
+      <a class="pill" href="https://github.com/ego2act/ego2act" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg>Code</a>
+      <a class="pill" href="https://huggingface.co/datasets/ego2act/ego2act-bench" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3" fill="none" stroke="currentColor" stroke-width="2"/></svg>Dataset</a>
+    </nav>
+  </div>
+</header>
+
+
+<main>
+<section class="showcase">
+  <p class="tagline lead-q"><em>&ldquo;Given starting environment scene and a goal, can video model demonstrate a series of manipulations to get the job done?&rdquo;</em></p>
+  <div class="wrap wide">
+    <video class="herovid" src="assets/hero.mp4" poster="assets/hero.webp" width="960" height="540" autoplay muted loop playsinline preload="auto" aria-label="Montage: goal, start image, a Human (correct) recording and six generated videos for one Ego2Act case"></video>
+    <p class="herocap">Same start image and goal for a correct human recording and six video models. Each number is the model&rsquo;s overall human-rated Final score, and each video is one example generation.</p>
+  </div>
+</section>
+<nav class="toc" aria-label="Sections"><div class="wrap wide">
+  <a href="#benchmark">Benchmark</a><a href="#takeaways">Results</a><a href="#q2">Examples</a><a href="#q3">Judge</a><a href="#q4">Failures</a><a href="#findings">Summary</a>
+</div></nav>
+
+<section class="wrap" id="overview">
+  <p class="tldr"><b>TL;DR</b> We record <strong class=num>110 everyday manipulation tasks</strong> and ask <strong class=num>six video generators</strong> to finish each one from a single start frame. Even the best model, Seedance-2.0, completes only <strong class="num neg">{{best_ht:.1f}}% of the task</strong> and scores <strong class="num neg">{{best_h:.1f}} Final</strong> under human rating, and <strong class="num neg">{{fc:.1f}}% of failed steps</strong> happen because the model skips a step or only partly carries it out, which leaves later steps without the state they depend on. <span class=sc>Ego2ActJudge</span> scores these videos without a reference and agrees with human ratings (<strong class="num pos">r&nbsp;=&nbsp;{{r:.2f}}</strong>) more closely than existing evaluators.</p>
+  <details class="abs"><summary>Full Abstract</summary><p class="abstract">Video generation models are increasingly being explored as world simulators for embodied planning and learning. To do so effectively, these models must not only generate visually appealing frames, but also predict how environments dynamically evolve when executing goal-directed actions. While evaluating these capabilities is crucial, existing benchmarks focus mainly on single short actions or step-by-step instructions. This leaves multi-step physical reasoning underexplored, especially in egocentric video generation that requires planning to simulate proper execution to accomplish high-level goals by carrying out multiple real-world manipulations. We introduce <span class=sc>Ego2Act</span>, a goal-directed benchmark featuring 2,640 videos from 110 real-world tasks across day-to-day settings, varying object clutter and multi-step complexity. Given an initial scene image and a high-level goal, <span class=sc>Ego2Act</span> evaluates whether video generation models can produce realistic egocentric videos of a hand manipulating objects to carry out the task. To support scalable evaluation, we also introduce <span class=sc>Ego2ActJudge</span>, a reference-free evaluation pipeline that achieves better task completion and physics plausibility evaluation alignment with human consensus compared to relevant baselines. Our findings reveal that models’ generated simulations often skip or partially execute steps, leaving later steps missing dependent states, which leads to unfulfilled goal. Furthermore, models consistently fail at fine-grained physical dynamics, particularly during complex object manipulation and persistent world modeling. We hope <span class=sc>Ego2Act</span> provides a rigorous testbed for advancing video models toward physically plausible, goal-directed simulation.</p></details>
+</section>
+
+<section class="wrap wide" id="benchmark">
+  <h2>The <span class=sc>Ego2Act</span> Benchmark</h2>
+  <p class="note">Every case starts from one real scene and one everyday goal, and grows into a full set of human and generated videos that <span class=sc>Ego2ActJudge</span> scores.</p>
+  <ol class="build" aria-label="What is inside the Ego2Act suite">
+    <li style="--i:0"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="9" width="28" height="20" rx="2"/><path d="M6 24l8-7 6 5 5-4 9 7"/><circle cx="27" cy="15" r="2.2"/><path d="M11 34h18"/></svg><span class="bn" data-to="{{b_cases:d}}">{{b_cases:,d}}</span><b>Start image and goal</b><span class="bd">real egocentric tasks in everyday settings</span></li>
+    <li style="--i:1"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="14" cy="12" r="4"/><path d="M6 30c0-5 3.6-9 8-9s8 4 8 9"/><path d="M25 13l3 3 6-6" class="ok"/><path d="M26 24l7 7M33 24l-7 7" class="no"/></svg><span class="bn" data-to="{{b_human:d}}">{{b_human:,d}}</span><b>Human recordings</b><span class="bd">{{b_hper:d}} correct and {{b_hper:d}} wrong attempts per task</span></li>
+    <li style="--i:2"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="8" width="22" height="16" rx="2"/><rect x="9" y="13" width="22" height="16" rx="2"/><rect x="13" y="18" width="22" height="16" rx="2"/><path d="M22 23v6l5-3z"/></svg><span class="bn" data-to="{{b_gen:d}}">{{b_gen:,d}}</span><b>Generated videos</b><span class="bd">{{b_models:d}} generators with {{b_seeds:d}} seeds each</span></li>
+    <li style="--i:3"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 32V20M16 32V12M24 32V16M32 32V8"/><path d="M5 34h30"/></svg><span class="bn" data-to="{{b_total:d}}">{{b_total:,d}}</span><b>Videos scored</b><span class="bd"><span class=sc>Ego2ActJudge</span> gives each one a <span class=vt>Task</span>, <span class=vp>Physics</span> and Final score</span></li>
+  </ol>
+  
+  <h3 class="sub">Benchmark Statistics</h3>
+  <figure class="fig">
+    <img src="assets/img/statistics.webp" width="1800" height="952" alt="Figure 2 showing the composition and descriptive statistics of Ego2Act" loading=lazy decoding=async>
+    <figcaption><b>Figure 2.</b> Composition and descriptive statistics of <span class=sc>Ego2Act</span>. (a) Domain composition of the 110-case benchmark. Panels (b&ndash;e) summarize the feature distributions, namely (b) action-family co-occurrence and coverage, (c) human control videos duration, (d) involved solid-object counts, and (e) case-mean observed operations. Co-occurrence means joint presence within a case, and observed operations describe number of subaction per case. (f) unique action family count per case.</figcaption>
+  </figure>
+</section>
+
+<section class="wrap wide" id="takeaways">
+  <h2>Evaluation Results</h2>
+  <h3 class="sub">How the six models rank</h3>
+  <p class="note">Six image-to-video generators, ranked separately by human raters and by <span class=sc>Ego2ActJudge</span>.</p>
+  <div class="ranks">
+{{LINEUP}}
+  </div>
+  <p class="note fn"><sup>*</sup>Human ratings cover a 25-case subset (600 videos).</p>
+  <h3 class="sub" id="q1">How far do generators get?</h3>
+  <p class="note summ">Not very far. Human raters give the best model, Seedance-2.0, a Final score of 64.0, and Cosmos-3 Nano only 3.9. The map shows, per generator and action type, the share of subgoals <span class=sc>Ego2ActJudge</span> rates complete (Task) or valid (Physics); hover a cell for its count.</p>
+  <div class="hm-ctl" role="tablist" aria-label="Heatmap metric"><button type=button class=chip role=tab aria-selected=true data-m=task>Task completion</button><button type=button class=chip role=tab aria-selected=false data-m=phys>Physics plausibility</button></div>
+  <div class="hm-wrap">
+    <div class="scroll"><table class="hm" data-m=task>{{HEAT_TASK}}</table><table class="hm" data-m=phys hidden>{{HEAT_PHYS}}</table></div>
+    <div class="legend" aria-hidden="true"><span>0%</span><i class=c0></i><i class=c1></i><i class=c2></i><i class=c3></i><i class=c4></i><i class=c5></i><i class=c6></i><i class=c7></i><i class=c8></i><span>100%</span></div>
+    <div class="hm-tip" role="status" aria-live="polite"></div>
+  </div>
+  <h4 class="sub sm">Leaderboard</h4>
+  <div class="tbl">
+    <div class="scroll"><table class="paper lb"><thead><tr><th rowspan=2>Generator</th><th colspan=3 class=grp>Human raters (25-case panel)</th><th colspan=3 class=grp><span class=sc>Ego2ActJudge</span> (Full cases)</th></tr><tr><th>Task</th><th>Physics</th><th>Final</th><th>Task</th><th>Physics</th><th>Final</th></tr></thead><tbody>
+{{LBTABLE}}
+    </tbody></table></div>
+    <p class="fn">Human (correct) and Human (wrong) are human recordings of correct and incorrect executions; Human (correct) recordings are verified successful during dataset construction and receive the rubric maximum under human rating. Cosmos-3 Nano is the smaller Nano variant of Cosmos 3, run locally, so its scores describe that variant only.</p>
+  </div>
+  <details class="more"><summary>Models and settings</summary>
+  <div class="tbl">
+    <p class="cap"><b>Table.</b> The six video models, how each was run and the exact version used. All models received the same prompt template, 480p output and seeds 101, 202 and 303.</p>
+    <div class="scroll"><table class="paper models"><thead><tr><th>Model</th><th>Access</th><th>Version</th><th>Notes</th></tr></thead><tbody>
+<tr><th scope=row>Seedance-2.0</th><td>OpenRouter</td><td><code>bytedance/seedance-2.0</code></td><td>16:9, up to 15 s</td></tr>
+<tr><th scope=row>Kling-v3-Pro</th><td>OpenRouter</td><td><code>kwaivgi/kling-v3.0-pro</code></td><td>16:9, up to 15 s</td></tr>
+<tr><th scope=row>Wan-2.7</th><td>OpenRouter</td><td><code>alibaba/wan-2.7</code></td><td>16:9, up to 10 s, its maximum</td></tr>
+<tr><th scope=row>Grok-1.5</th><td>OpenRouter</td><td><code>x-ai/grok-imagine-video-1.5</code></td><td>16:9, up to 15 s</td></tr>
+<tr><th scope=row>MiniMax-H3</th><td>Local, SGLang</td><td><code>MiniMaxAI/MiniMax-H3</code></td><td>4:3 native, up to 15 s, 24 fps, 35 steps</td></tr>
+<tr><th scope=row>Cosmos-3 Nano</th><td>Local, SGLang</td><td><code>nvidia/Cosmos3-Nano</code></td><td>16:9, up to 15 s, 24 fps, 35 steps, guidance 4.0, flow shift 10.0</td></tr>
+    </tbody></table></div>
+    <p class="fn">Local models ran on NVIDIA A100 hardware. Cosmos-3 Nano is the Nano variant of Cosmos 3, so its results describe that variant only.</p>
+  </div></details>
+  <details class="more"><summary>Full cross-benchmark leaderboard (Table 2)</summary>
+  <div class="tbl">
+{{T2}}
+  </div></details>
+</section>
+
+<section class="full" id="q2">
+  <div class="wrap wide">
+  <h2>Example Cases</h2>
+    <p class="note">Pick a case to compare a correct human recording with one generation (seed 101) from each model, all given the same start image and goal. Badges are <span class=sc>Ego2ActJudge</span> Final scores (0&ndash;100): <b class="score hi">&ge;70</b> <b class="score gd">60&ndash;69</b> <b class="score mid">30&ndash;59</b> <b class="score lo">&lt;30</b>.</p>
+    <div class="cmp-sel" id="cmp-sel" role="tablist" aria-label="Comparison case"></div>
+    <p class="goal" id="cmp-goal"></p>
+    <div class="cmp" id="cmp"></div>
+  </div>
+</section>
+
+<section class="wrap wide" id="q3">
+  <div class="jtree-wrap">{{JTREE}}<div class="jtip" role="status" aria-live="polite"></div></div>
+  <p class="note summ">Agrees with human raters at <strong class=num>r&nbsp;=&nbsp;0.69</strong>, better than every baseline, and ranks the six models almost the same way (<strong class=num>&rho;&nbsp;=&nbsp;0.94</strong>).</p>
+  <div class="tbl narrow">
+{{T3}}
+  </div>
+  <details class="more charts">
+    <summary>More analysis</summary>
+    <figure class="fig chart c-sc">
+      <div class="lgd"><span><i style="background:#d4a017"></i>Human rating</span><span><i style="background:#3d8bc4"></i><span class=sc>Ego2ActJudge</span></span><label><input type=checkbox class=vtog checked> Show individual videos</label></div>
+      <div class=chbox>{{SCAT}}<div class=ctip role=status aria-live=polite></div></div>
+      <figcaption><b>The judge is more lenient on physics than humans.</b> Faint dots are single videos, big dots are model averages (amber = human raters, blue = <span class=sc>Ego2ActJudge</span>). The blue judge averages sit clearly <u>above</u> the amber human ones, since the judge adds only <strong class=num>{{sc_dt:+.1f}}</strong> on Task but <strong class=num>{{sc_dp:+.1f}}</strong> on Physics ({{sc_hp:.1f}}&nbsp;&rarr;&nbsp;{{sc_jp:.1f}}), so it catches missed steps well but overlooks physical errors that humans notice. {{sc_n:d}} videos rated by both.</figcaption>
+    </figure>
+    <div class="two cpair">
+      <figure class="fig chart c-st">
+        <div class="lgd"><span><i style="background:#d4a017"></i>Human</span><span><i style="background:#3d8bc4"></i><span class=sc>Ego2ActJudge</span></span></div>
+        <div class=chbox>{{STAB}}<div class=ctip role=status aria-live=polite></div></div>
+        <figcaption><b>3-seed stability.</b> Final score per model, drawn from the worst seed through the average (dot) to the best of 3 seeds and sorted by the human average.</figcaption>
+      </figure>
+      <figure class="fig c-ab">
+        <img src="assets/img/rubric_ablation.webp" width="685" height="295" alt="Rubric ablation: average MAE per variant, lower is better" loading=lazy decoding=async>
+        <figcaption><b>Rubric ablation.</b> Average MAE under rubric ablation; lower is better. The full rubric scores gates sequentially, stopping at the first failure, whereas Independent scores all gates.</figcaption>
+      </figure>
+    </div>
+  </details>
+</section>
+
+<section class="wrap xwide" id="q4">
+  <h2>Common Failure Patterns</h2>
+  <p>Most failed steps are simply skipped or left half-done (88.7% of failed Task subgoals). Attaching things (38.6% complete) and transferring material (41.9%) are the hardest. Below are representative examples, grouped by error type, and the ones with annotated frames come from the paper's appendix.</p>
+  <p class="fcall"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v14M6 12l6 6 6-6"/></svg>Click a failure type to see representative examples of common errors</p>
+  {{FAILOV}}
+  {{FAIL}}
+</section>
+
+<section class="wrap" id="findings">
+  <h2>Summary</h2>
+  <ol class="kfs">
+    <li class="kf k-bad"><div class="kf-top"><svg class="ka" viewBox="0 0 48 48"><text x="2" y="15" class="lab">human</text><rect x="4" y="18" width="40" height="6" rx="3" class="hum a-fillh"/><text x="2" y="33" class="lab">model</text><rect x="4" y="36" width="40" height="6" rx="3" class="bg"/><rect x="4" y="36" width="25.6" height="6" rx="3" class="bad a-fill"/><path d="M29.6 34v10" class="gapl a-gap"/></svg><span class="kf-num" data-to="{{best_h:.1f}}">{{best_h:.1f}}</span><span class="kf-unit">best human-rated Final</span></div><h3>A large gap to real execution</h3><p>Even <img class=il src="assets/logos/bytedance.png" width=16 height=16 alt=""><b>Seedance-2.0</b> reaches only <strong class=num>{{best_h:.1f}}</strong> under human rating, and <img class=il src="assets/logos/nvidia.png" width=16 height=16 alt=""><b>Cosmos-3 Nano</b> just <strong class=num>{{cos_h:.1f}}</strong>.</p></li>
+    <li class="kf k-info"><div class="kf-top"><svg class="ka" viewBox="0 0 48 48"><circle cx="8" cy="30" r="4" class="fgf"/><circle cx="24" cy="30" r="4" class="miss"/><circle cx="40" cy="30" r="4" class="fgf"/><path d="M8 24q16-18 32 0" class="ln a-hop"/></svg><span class="kf-num" data-to="{{fc:.1f}}">{{fc:.1f}}</span><span class="kf-unit">% of failed steps</span></div><h3>Steps get skipped</h3><p>Most failures are <u>omissions</u>, where the needed step is <b>skipped or left half-done</b>, so later steps have nothing to build on.</p></li>
+    <li class="kf k-info"><div class="kf-top"><svg class="ka" viewBox="0 0 48 48"><rect x="6" y="18" width="14" height="12" rx="2" class="ln a-left"/><path d="M28 18h14v12H28v-3h-4v-6h4z" class="ln a-right"/></svg><span class="kf-num" data-to="{{a4:.1f}}">{{a4:.1f}}</span><span class="kf-unit">% attachment done</span></div><h3>Contact-rich changes are hardest</h3><p>Attaching things (<strong class=num>{{a4:.1f}}%</strong>) and transferring material (<strong class=num>{{a6:.1f}}%</strong>) have the <u>lowest completion</u> of any action type.</p></li>
+    <li class="kf k-good"><div class="kf-top"><svg class="ka" viewBox="0 0 48 48"><g class="a-hl"><path d="M4 26h9l6-4 5 2"/><path d="M13 26l4 5"/></g><g class="a-hr"><path d="M44 26h-9l-6 4-5-2"/><path d="M35 26l-4-5"/></g><path d="M18 12l4 4 8-8" class="good a-ok"/></svg><span class="kf-num" data-to="{{r:.2f}}">{{r:.2f}}</span><span class="kf-unit">r with humans</span></div><h3>The judge tracks humans</h3><p><span class=sc>Ego2ActJudge</span> agrees with human consensus far better than the <b>best baseline</b> (RBench, <strong class=num>{{rb:.2f}}</strong>), close to a single human rater (<strong class=num>{{loo:.2f}}</strong>).</p></li>
+    <li class="kf k-good"><div class="kf-top"><svg class="ka" viewBox="0 0 48 48"><path d="M24 6v36" class="dash"/><g class="a-sepl"><circle cx="24" cy="24" r="7" class="goodf"/><path d="M20.5 24l2.5 2.5 4.5-5" class="wht"/></g><g class="a-sepr"><circle cx="24" cy="24" r="7" class="badf"/><path d="M21 21l6 6M27 21l-6 6" class="wht"/></g></svg><span class="kf-num" data-to="{{auc:.2f}}">{{auc:.2f}}</span><span class="kf-unit">AUC, success vs failure</span></div><h3>It separates success from failure</h3><p>Pick any successful and any unsuccessful human recording and the judge scores the successful one higher <strong class=num>{{auc_pct:.0f}}%</strong> of the time (Mann&ndash;Whitney <i>p</i>&nbsp;&lt;&nbsp;10<sup>&minus;{{p_exp:d}}</sup>; mean <strong class=num>{{mc:.1f}}</strong> vs <strong class=num>{{mw:.1f}}</strong>, {{nc:d}} vs {{nw:d}} videos), so it <u>tells success from failure</u>.</p></li>
+    <li class="kf k-bad"><div class="kf-top"><svg class="ka" viewBox="0 0 48 48"><path d="M6 42h36M6 42V6" class="dash"/><g class="a-cloud"><circle cx="16" cy="34" r="2"/><circle cx="21" cy="31" r="2"/><circle cx="19" cy="37" r="2"/><circle cx="25" cy="35" r="2"/><circle cx="23" cy="29" r="2"/><circle cx="28" cy="32" r="2"/></g><path d="M34 30V12M29.5 16.5L34 12l4.5 4.5" class="badl"/></svg><span class="kf-num" data-to="{{sc_dp:.1f}}">{{sc_dp:.1f}}</span><span class="kf-unit">Physics points above humans</span></div><h3>The automated judge has an upward bias</h3><p>Compared with human raters, <span class=sc>Ego2ActJudge</span> adds only <strong class=num>{{sc_dt:+.1f}}</strong> on Task but <strong class=num>{{sc_dp:+.1f}}</strong> on Physics, so it catches missing steps but <u>overlooks subtle physical errors</u> that people notice.</p></li>
+  </ol>
+</section>
+
+<section class="wrap" id="bibtex">
+  <h2>BibTeX</h2>
+  <div class="bib"><button type=button class="copy" aria-label="Copy BibTeX">Copy</button><pre><code>@article{ego2act2026,
+  title   = {Ego2Act: Evaluating Goal-Directed Manipulation in Egocentric Video Generation},
+  author  = {Irawan, Patrick Amadeus and Parlambang, Iskandar Muda Rizky and Maulana, Rava and Cui, Qinrong and Fuadi, Erland Hilman and Zuhri, Zayd M. K. and Absar, Nanda Ryaas and Elshabrawy, Ahmed and Mulyawan, Wilfried Ariel and Yu, Shoubin and Zhang, Yue and Bansal, Mohit and Aji, Alham Fikri},
+  journal = {arXiv preprint arXiv:2610.01092},
+  year    = {2026}
+}</code></pre></div>
+</section>
+</main>
+<footer><div class="wrap">&copy; 2026 Patrick Amadeus Irawan, Alham Fikri Aji</div></footer>
+</body>
+</html>

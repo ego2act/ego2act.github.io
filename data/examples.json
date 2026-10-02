@@ -1,0 +1,169 @@
+{
+ "seed": 101,
+ "models": [
+  [
+   "seedance_2_0",
+   "Seedance-2.0"
+  ],
+  [
+   "kling_v3_pro",
+   "Kling-v3-Pro"
+  ],
+  [
+   "wan_2_7",
+   "Wan-2.7"
+  ],
+  [
+   "grok_imagine_video_1_5",
+   "Grok-1.5"
+  ],
+  [
+   "minimax_h3",
+   "MiniMax-H3"
+  ],
+  [
+   "cosmos_3",
+   "Cosmos-3 Nano"
+  ]
+ ],
+ "compare": [
+  "make_coffee",
+  "line_marker_calculator",
+  "pour_milk",
+  "toothbrush_case"
+ ],
+ "cases": {
+  "make_coffee": {
+   "goal": "The empty cup filled with instant coffee and water, with the mixture stirred using the spoon.",
+   "start": "assets/clips/make_coffee/start.webp",
+   "models": {
+    "seedance_2_0": {
+     "v": "assets/clips/make_coffee/seedance_2_0",
+     "f": 100.0
+    },
+    "kling_v3_pro": {
+     "v": "assets/clips/make_coffee/kling_v3_pro",
+     "f": 48.30458915396479
+    },
+    "wan_2_7": {
+     "v": "assets/clips/make_coffee/wan_2_7",
+     "f": 80.0
+    },
+    "grok_imagine_video_1_5": {
+     "v": "assets/clips/make_coffee/grok_imagine_video_1_5",
+     "f": 0.0
+    },
+    "minimax_h3": {
+     "v": "assets/clips/make_coffee/minimax_h3",
+     "f": 17.07825127659933
+    },
+    "cosmos_3": {
+     "v": "assets/clips/make_coffee/cosmos_3",
+     "f": 0.0
+    }
+   },
+   "human": "assets/clips/make_coffee/human",
+   "prompt": "You are an action simulator. Generate a video that simulates a complete sequence of actions from the given starting frame to accomplish the goal.\n\nGoal: The empty cup filled with instant coffee and water, with the mixture stirred using the spoon.\n\nConstraints:\n1. Use only one hand throughout the entire task.\n2. Operate strictly within the visible scene and only interact with objects visible in the starting frame.\n3. Follow realistic human-object interactions and physical laws (no teleportation, jittering, object duplication, disappearance, or other physically implausible behaviors).",
+   "start_full": "assets/clips/make_coffee/start.jpg"
+  },
+  "line_marker_calculator": {
+   "goal": "A vertical line drawn with a marker in the middle of the paper, with the pen and capped/closed marker on the left side of the line and the calculator on the right side of it.",
+   "start": "assets/clips/line_marker_calculator/start.webp",
+   "models": {
+    "seedance_2_0": {
+     "v": "assets/clips/line_marker_calculator/seedance_2_0",
+     "f": 76.37626158259734
+    },
+    "kling_v3_pro": {
+     "v": "assets/clips/line_marker_calculator/kling_v3_pro",
+     "f": 57.735026918962575
+    },
+    "wan_2_7": {
+     "v": "assets/clips/line_marker_calculator/wan_2_7",
+     "f": 40.824829046386306
+    },
+    "grok_imagine_video_1_5": {
+     "v": "assets/clips/line_marker_calculator/grok_imagine_video_1_5",
+     "f": 77.45966692414834
+    },
+    "minimax_h3": {
+     "v": "assets/clips/line_marker_calculator/minimax_h3",
+     "f": 55.27707983925666
+    },
+    "cosmos_3": {
+     "v": "assets/clips/line_marker_calculator/cosmos_3",
+     "f": null
+    }
+   },
+   "human": "assets/clips/line_marker_calculator/human",
+   "prompt": "You are an action simulator. Generate a video that simulates a complete sequence of actions from the given starting frame to accomplish the goal.\n\nGoal: A vertical line drawn with a marker in the middle of the paper, with the pen and capped/closed marker on the left side of the line and the calculator on the right side of it.\n\nConstraints:\n1. Use only one hand throughout the entire task.\n2. Operate strictly within the visible scene and only interact with objects visible in the starting frame.\n3. Follow realistic human-object interactions and physical laws (no teleportation, jittering, object duplication, disappearance, or other physically implausible behaviors).",
+   "start_full": "assets/clips/line_marker_calculator/start.jpg"
+  },
+  "pour_milk": {
+   "goal": "The cup contains some milk from the sealed milk box.",
+   "start": "assets/clips/pour_milk/start.webp",
+   "models": {
+    "seedance_2_0": {
+     "v": "assets/clips/pour_milk/seedance_2_0",
+     "f": 100.0
+    },
+    "kling_v3_pro": {
+     "v": "assets/clips/pour_milk/kling_v3_pro",
+     "f": 64.54972243679029
+    },
+    "wan_2_7": {
+     "v": "assets/clips/pour_milk/wan_2_7",
+     "f": 0.0
+    },
+    "grok_imagine_video_1_5": {
+     "v": "assets/clips/pour_milk/grok_imagine_video_1_5",
+     "f": 33.333333333333336
+    },
+    "minimax_h3": {
+     "v": "assets/clips/pour_milk/minimax_h3",
+     "f": 57.735026918962575
+    },
+    "cosmos_3": {
+     "v": "assets/clips/pour_milk/cosmos_3",
+     "f": 0.0
+    }
+   },
+   "human": "assets/clips/pour_milk/human",
+   "prompt": "You are an action simulator. Generate a video that simulates a complete sequence of actions from the given starting frame to accomplish the goal.\n\nGoal: The cup contains some milk from the sealed milk box.\n\nConstraints:\n1. Use only one hand throughout the entire task.\n2. Operate strictly within the visible scene and only interact with objects visible in the starting frame.\n3. Follow realistic human-object interactions and physical laws (no teleportation, jittering, object duplication, disappearance, or other physically implausible behaviors).",
+   "start_full": "assets/clips/pour_milk/start.jpg"
+  },
+  "toothbrush_case": {
+   "goal": "Closed toothpaste and folded toothbrush stored inside the closed travel case.",
+   "start": "assets/clips/toothbrush_case/start.webp",
+   "models": {
+    "seedance_2_0": {
+     "v": "assets/clips/toothbrush_case/seedance_2_0",
+     "f": 100.0
+    },
+    "kling_v3_pro": {
+     "v": "assets/clips/toothbrush_case/kling_v3_pro",
+     "f": 69.2820323027551
+    },
+    "wan_2_7": {
+     "v": "assets/clips/toothbrush_case/wan_2_7",
+     "f": 77.45966692414834
+    },
+    "grok_imagine_video_1_5": {
+     "v": "assets/clips/toothbrush_case/grok_imagine_video_1_5",
+     "f": 57.735026918962575
+    },
+    "minimax_h3": {
+     "v": "assets/clips/toothbrush_case/minimax_h3",
+     "f": 63.245553203367585
+    },
+    "cosmos_3": {
+     "v": "assets/clips/toothbrush_case/cosmos_3",
+     "f": 0.0
+    }
+   },
+   "human": "assets/clips/toothbrush_case/human",
+   "prompt": "You are an action simulator. Generate a video that simulates a complete sequence of actions from the given starting frame to accomplish the goal.\n\nGoal: Closed toothpaste and folded toothbrush stored inside the closed travel case.\n\nConstraints:\n1. Use only one hand throughout the entire task.\n2. Operate strictly within the visible scene and only interact with objects visible in the starting frame.\n3. Follow realistic human-object interactions and physical laws (no teleportation, jittering, object duplication, disappearance, or other physically implausible behaviors).",
+   "start_full": "assets/clips/toothbrush_case/start.jpg"
+  }
+ }
+}

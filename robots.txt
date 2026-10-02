@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ego2act.github.io/sitemap.xml
